@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(248, 219, 223);
+        }
+        div {
+            display: flex;
+            height: 200px;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px 5px;
+            border-radius: 10px;
+            font-size: 24px;
+            border: none;
+            background-color: rgb(228, 48, 84);
+            color: #fff;
+        }
+
+        .calc {
+            display: flex;
+            flex-flow: column;
+            width: 250px;
+    
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <form name="hello">
+        <label>Как тебя зовут?
+            <input type="text" name="name">
+            <button onclick="showHello()">Ок</button>
+        </label>
+    </form>
+</div>
+
+
+
+
+<div class="calc">
+    <h4>Калькулятор</h4>
+    <form name="number">
+        <label>Введите число:
+            <input type="text" name="number"> 
+        </label>
+        <input type="submit" value="Ок"> 
+        <label>Результат:
+            <input type="text" name="number"> 
+        </label>
+    </form>
+</div>
+
+<div>
+    <button onclick="calcSum()">+</button>
+    <button onclick="calcMinus()">-</button>
+    <button onclick="calcDivid()">/</button>
+    <button onclick="calcMulti()">*</button>
+</div>
+
+
+
+Перепишите домашнее задание прошлой недели c помощью input для ввода данных и div (либо input) для вывода результата
+
+
+<script type="text/javascript">
+
+let form = document.forms.calculator;
+
+form.money.oninput = calculate;
+form.months.onchange = calculate;
+form.interest.oninput = calculate;
+
+input.oninput = function() {
+    result.innerHTML = input.value;
+};
+
+function calcSum() {
+    let a = prompt('Введите число', []);
+    let b = prompt('Введите число', []);
+    alert(+a + +b);
+}
+
+function calcMinus() {
+    let a = prompt('Введите число', []);
+    let b = prompt('Введите число', []);
+    alert(+a - +b);
+}
+
+function calcDivid() {
+    let a = prompt('Введите число', []);
+    let b = prompt('Введите число', []);
+    alert(+a / +b);
+}
+
+function calcMulti() {
+    let a = prompt('Введите число', []);
+    let b = prompt('Введите число', []);
+    alert(+a * +b);
+}
+
+</script>
+
+
+</body>
+</html>
