@@ -60,16 +60,49 @@
         #calc-result {
             padding: 2% 2%;
             background-color: #fff;
-            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+            margin-bottom: 5%;
         }
-        
+
+        #gallary {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        #gallary>div {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #gallary>div>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #gallary>div:first-child {
+            display: block;
+        }
+
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+        }
+
+        .next {
+            right: 0;
+        }
     </style>
 </head>
 
 <body>
-
-
-
     <div class="part-one">
 
         <form class="hello">
@@ -104,18 +137,56 @@
     </div>
 
 
-<div class="gallary">
-<img src="https://images4.alphacoders.com/112/1126942.jpg" alt="Grogu">
-<img src="https://wallpaperaccess.com/full/6653756.png" alt="">
-<img src="https://cultbox.co.uk/wp-content/uploads/2022/02/The-Book-of-Boba-Fett-Six-Grogu.jpg" alt="">
-</div>
+    <div id="gallary">
+        <div class="mySlades fade">
+            <img src="https://images4.alphacoders.com/112/1126942.jpg" alt="Grogu">
+        </div>
 
+        <div class="mySlades fade">
+            <img src="https://avatars.mds.yandex.net/i?id=a0c0f6f890fc4781866da1aa7c88a834-3927287-images-thumbs&n=13"
+                alt="Grogu with Mando on plane">
+        </div>
+        <div class="mySlades fade">
+            <img src="https://avatars.mds.yandex.net/i?id=05ddfd64a69590081477b305b336b8c7-5750239-images-thumbs&n=13"
+                alt="happy Grogu">
+        </div>
+        <div class="mySlades fade">
+            <img src="https://cultbox.co.uk/wp-content/uploads/2022/02/The-Book-of-Boba-Fett-Six-Grogu.jpg"
+                alt="Mando with Grogu">
+        </div>
+        <div class="mySlades fade">
+            <img src="https://i.pinimg.com/originals/d0/e9/3f/d0e93f3756c114dc7cd5482e372aeae9.jpg"
+                alt="grogu eat the eggs">
+        </div>
 
+        <button class="prev">&lArr;</button>
+        <button class="next">&rArr;</button>
+    </div>
 
 
     <script type="text/javascript">
+        let btn_prev = document.getElementsByClassName("prev");
+        let btn_next = document.getElementsByClassName("next");
+        let images = document.getElementsByClassName("mySlades");
+        let i = 0;               // номер текущей картинки, на экране
+        images[i].style.display = 'none'; // прячем текущую картину
+        i++;             // увеличиваем переменную i на единицу
+        if (i >= images.length) {
+            i = 0; // переменная i равна 0
+        }
 
-// переменные и функции для вывода содержимого input  на страницу
+        btn_prev.onclick = function () {
+            images[i].style.display = 'none';
+            i = i - 1;
+            if (i < 0) {
+                i = images.length - 1;
+            }
+            images[i].style.display = 'block';
+        }
+
+
+
+        // переменные и функции для вывода содержимого input  на страницу
         let message = document.querySelector('.hello-message');
         let form = document.querySelector('.hello');
         let name = document.querySelector('.hello-name');
@@ -126,7 +197,7 @@
         };
 
 
-// функции вычисления
+        // функции вычисления
         function calcSum() {
             let result;
             let num1 = Number(document.getElementById("calc-num1").value);
@@ -161,16 +232,15 @@
 
 
         let newColor = document.getElementById('calc-result');
-            newColor.onclick = function (evt) {
-            newColor.style.background = "Tomato";   //меняю цвет с выводом результата подсчета на калькуляторе при клике на поле
+        newColor.onclick = function (evt) {
+            newColor.style.background =
+                "Tomato"; //меняю цвет с выводом результата подсчета на калькуляторе при клике на поле
         }
 
         let newColorBody = document.body;
-            newColorBody.onclick = function (evt) {
-            newColorBody.style.background = "PeachPuff";  //меняю цвет body при клике на поле
+        newColorBody.onclick = function (evt) {
+            newColorBody.style.background = "PeachPuff"; //меняю цвет body при клике на поле
         }
-
-
     </script>
 
 
