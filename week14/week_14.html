@@ -70,25 +70,19 @@
             margin: auto;
         }
 
-        #gallary>div {
+        .mySlades {
             width: 100%;
             height: 100%;
-            display: none;
         }
 
-        #gallary>div>img {
+        #gallary div img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        #gallary>div:first-child {
-            display: block;
-        }
-
-
-        .prev,
-        .next {
+        #prev,
+        #next {
             cursor: pointer;
             position: absolute;
             top: 50%;
@@ -96,7 +90,7 @@
             margin-top: -22px;
         }
 
-        .next {
+        #next {
             right: 0;
         }
     </style>
@@ -138,37 +132,45 @@
 
 
     <div id="gallary">
-        <div class="mySlades fade">
+        <div class="mySlades active">
             <img src="https://images4.alphacoders.com/112/1126942.jpg" alt="Grogu">
         </div>
 
-        <div class="mySlades fade">
+        <div class="mySlades">
             <img src="https://avatars.mds.yandex.net/i?id=a0c0f6f890fc4781866da1aa7c88a834-3927287-images-thumbs&n=13"
                 alt="Grogu with Mando on plane">
         </div>
-        <div class="mySlades fade">
+        <div class="mySlades">
             <img src="https://avatars.mds.yandex.net/i?id=05ddfd64a69590081477b305b336b8c7-5750239-images-thumbs&n=13"
                 alt="happy Grogu">
         </div>
-        <div class="mySlades fade">
+        <div class="mySlades">
             <img src="https://cultbox.co.uk/wp-content/uploads/2022/02/The-Book-of-Boba-Fett-Six-Grogu.jpg"
                 alt="Mando with Grogu">
         </div>
-        <div class="mySlades fade">
+        <div class="mySlades">
             <img src="https://i.pinimg.com/originals/d0/e9/3f/d0e93f3756c114dc7cd5482e372aeae9.jpg"
                 alt="grogu eat the eggs">
         </div>
 
-        <button class="prev">&lArr;</button>
-        <button class="next">&rArr;</button>
+        <button id="prev">&lArr;</button>
+        <button id="next">&rArr;</button>
     </div>
 
 
     <script type="text/javascript">
-        let btn_prev = document.getElementsByClassName("prev");
-        let btn_next = document.getElementsByClassName("next");
-        let images = document.getElementsByClassName("mySlades");
-        let i = 0;               // номер текущей картинки, на экране
+        const btn_prev = document.getElementById("prev");
+        const btn_next = document.getElementById("next");
+        const images = document.querySelectorAll(".mySlades");
+        
+        
+        let i = 0;                        // номер текущей картинки, на экране
+
+const activeSlide = n => {
+console.log(mySlades);
+
+}
+
         images[i].style.display = 'none'; // прячем текущую картину
         i++;             // увеличиваем переменную i на единицу
         if (i >= images.length) {
