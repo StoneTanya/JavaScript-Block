@@ -70,7 +70,7 @@
             margin: auto;
         }
 
-        .mySlades {
+        .mySlade {
             width: 100%;
             height: 100%;
         }
@@ -132,23 +132,23 @@
 
 
     <div id="gallary">
-        <div class="mySlades active">
+        <div class="mySlade active">
             <img src="https://images4.alphacoders.com/112/1126942.jpg" alt="Grogu">
         </div>
 
-        <div class="mySlades">
+        <div class="mySlade">
             <img src="https://avatars.mds.yandex.net/i?id=a0c0f6f890fc4781866da1aa7c88a834-3927287-images-thumbs&n=13"
                 alt="Grogu with Mando on plane">
         </div>
-        <div class="mySlades">
+        <div class="mySlade">
             <img src="https://avatars.mds.yandex.net/i?id=05ddfd64a69590081477b305b336b8c7-5750239-images-thumbs&n=13"
                 alt="happy Grogu">
         </div>
-        <div class="mySlades">
+        <div class="mySlade">
             <img src="https://cultbox.co.uk/wp-content/uploads/2022/02/The-Book-of-Boba-Fett-Six-Grogu.jpg"
                 alt="Mando with Grogu">
         </div>
-        <div class="mySlades">
+        <div class="mySlade">
             <img src="https://i.pinimg.com/originals/d0/e9/3f/d0e93f3756c114dc7cd5482e372aeae9.jpg"
                 alt="grogu eat the eggs">
         </div>
@@ -159,23 +159,20 @@
 
 
     <script type="text/javascript">
+
         const btn_prev = document.getElementById("prev");
         const btn_next = document.getElementById("next");
-        const images = document.querySelectorAll(".mySlades");
+        const images = document.querySelectorAll(".mySlade");
         
-        
-        let i = 0;                        // номер текущей картинки, на экране
+        let i = 0;  // номер текущей картинки, на экране
 
-const activeSlide = n => {
-console.log(mySlades);
-
-}
-
-        images[i].style.display = 'none'; // прячем текущую картину
-        i++;             // увеличиваем переменную i на единицу
+        btn_next.onclick = function () {
+        images[i].style.display = 'none';   // прячем текущую картину
+        i++;                                // увеличиваем переменную i на единицу
         if (i >= images.length) {
-            i = 0; // переменная i равна 0
+            i = 0;                          // переменная i равна 0
         }
+    }
 
         btn_prev.onclick = function () {
             images[i].style.display = 'none';
