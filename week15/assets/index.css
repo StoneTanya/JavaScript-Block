@@ -1,0 +1,66 @@
+
+.button-to-modal {
+height: 50vh;
+}
+
+.modal-title {
+    font-family: sans-serif;
+    padding-top: 7%;
+    font-weight: 700;
+    font-size: 2rem;
+    color: rgb(58, 54, 54);
+}
+
+.btn-close_modal {
+    position: absolute;
+    z-index: 1;
+    top: -5%;
+    right: -4%;
+    border: 0;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    color: rgb(172, 134, 89);
+}
+
+.logo {
+    position: absolute;
+    z-index: 1;
+    top: -20%;
+    right: 30%;
+}
+
+input {
+    padding: 10px 20px;
+    margin: 5px 5px;
+    font-size: 24px;
+}
+
+.btn-reg {
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: 600;
+    border: 2px #00AEEF solid;
+    background-color: #fff;
+    color: #00AEEF;
+}
+
+.btn-reg:hover {
+    background-color: #00AEEF;
+    color: #fff;
+}
+
+.link-for-customer {
+    text-decoration: none;
+    color: #00AEEF;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.data-agreement__block {
+    padding-top: 22px;
+}
+
+.data-agreement {
+    text-decoration: none;
+    color: black;
+}
