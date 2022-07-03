@@ -6,60 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<style>
-    body {
-    background-color: rgb(248, 219, 223);
-    font-family: Verdana, Geneva, Tahoma, sans-serif
-}
-
-input {
-    padding: 10px 20px;
-    margin: 5px 5px;
-    font-size: 24px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 5px 5px;
-    border-radius: 10px;
-    font-size: 24px;
-    border: none;
-    background-color: rgb(228, 48, 84);
-    color: #fff;
-}
-
-.calc {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 5%;
-}
-
-#calc {
-    background-color: rgb(0, 195, 255);
-    padding: 1% 2%;
-    margin-top: 3%;
-}
-
-#calc-button {
-    margin: 2%;
-    margin-left: 5%;
-} 
-
-#result {
-    padding: 3% 5%;
-    background-color: #fff;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-    margin-bottom: 5%;
-    margin-top: 5%;
-    font-size: 24px;
-}
-
-</style>
+    <link rel="stylesheet" href="assets/calculate.css">
 </head>
 
-<body>
+<body class="page light-theme">
+
+    <div>
+        <button id="theme-button">Переключить тему</button>
+    </div>
 
     <div class="calc">
         <h4>Калькулятор</h4>
@@ -117,6 +71,27 @@ button {
             }
             document.getElementById("result").innerHTML = result;
         }
+
+
+    // переключатель тем
+    const page = document.querySelector('.page');
+    const themeButton = document.getElementById('theme-button');
+    
+    themeButton.onclick = function() {
+        page.classList.toggle('light-theme');
+        page.classList.toggle('dark-theme');
+};
+
+
+//     функция для разового переключения темы (кнопка сработает 1 раз)
+//         themeButton.onclick = function() {
+//         page.classList.remove('light-theme');
+//         page.classList.add('dark-theme');
+// };
+
+
+
+
 
     </script>
 
