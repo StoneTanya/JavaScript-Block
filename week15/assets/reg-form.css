@@ -67,18 +67,19 @@ input {
 }
 
 /* Это стили для кастомных сообщений об ошибке */
-.error {
-    width  : 100%;
-    padding: 0;
-
-    font-size: 80%;
-    color: white;
-    background-color: #900;
-    border-radius: 0 0 5px 5px;
-
+#error {
+    width: 70%;
+    margin: 5% 5%;
+    font-size: 1rem;
+    color: rgb(210, 30, 30);
+    border-radius: 5px;
     box-sizing: border-box;
 }
-
-.error.active {
-    padding: 0.3em;
+#success {
+    width: 70%;
+    margin: 5% 5%;
+    font-size: 1rem;
+    color: rgb(4, 66, 19);
+    border-radius: 5px;
+    box-sizing: border-box;
 }

@@ -35,30 +35,25 @@
                 <!-- Тело модального окна -->
                 <div class="modal-body container">
                     
-                            <form class="row justify-content-center ">
+                            <form id="regform" class="row justify-content-center" novalidate onsubmit="function welcome ()">
                             <label for="Name" class="col-md-5">ИМЯ
                                 <input type="text" name="Name" id="inputName" required />
-                                <p class="error NameError"></p>
                             </label>
 
                             <label for="Surname" class="col-md-5">ФАМИЛИЯ 
                                 <input type="text" name="Surname" id="inputSurname" required />
-                            <p class="error SurnameError"></p>
                             </label>
 
                             <label for="Phone" class="col-md-5">ТЕЛЕФОН  
                                 <input type="text" min="11" max="11" name="Phone" id="inputPhone" />
-                                <p class="error PhoneError"></p>
                             </label>
 
                             <label for="Mail" class="col-md-5" >EMAIL
                                 <input type="email" name="Mail" id="inputMail" required />
-                            <p class="error emailError"></p>
                             </label>
 
                             <label for="Password" class="col-md-5">ПАРОЛЬ 
                                 <input type="password" name="Password" id="inputPassword" required />
-                            <p class="error PasswordError"></p>
                             </label>
 
                             <div class="col-md-5 data-agreement__block">
@@ -66,9 +61,9 @@
                                         правилами обработки персональных данных</a></span>
                             </div>
 
+                            <div id="error" class="text-center"></div>
                             <button type="submit" class="col-10" id="btn-reg">ЗАРЕГИСТРИРОВАТЬСЯ</button>
                         </form>
-                    
                 </div>
 
                 <!-- Футер модального окна -->
