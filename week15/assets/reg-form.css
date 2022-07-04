@@ -36,7 +36,7 @@ input {
     font-size: 24px;
 }
 
-.btn-reg {
+#btn-reg {
     padding: 10px 15px;
     font-size: 24px;
     font-weight: 600;
