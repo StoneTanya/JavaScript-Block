@@ -71,15 +71,6 @@ regBtn.addEventListener('click', function () {
 });
 
 
-Name.addEventListener('keyup', function (event) {
-    if (Name.value.match(letters)) {
-        error.innerHTML += "";
-    } else {
-        error.innerHTML += "Недопустимые значения в поле Имя<br>";
-        regBtn.disabled = true;
-    }   
-});
-
 success.addEventListener('submit', function(e) {
     e.preventDefault();
     if (regBtn.disabled == false) {
@@ -90,7 +81,17 @@ success.addEventListener('submit', function(e) {
 
 
 
+/*
+Name.addEventListener('keyup', function (event) {
+    if (Name.value.match(letters)) {
+        error.innerHTML += "";
+    } else {
+        error.innerHTML += "Недопустимые значения в поле Имя<br>";
+        regBtn.disabled = true;
+    }
+});
 
+*/
 
 
 
