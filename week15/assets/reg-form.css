@@ -77,11 +77,9 @@ input {
 }
 
 #welcome {
-    width: 70%;
     margin: 5% 5%;
     font-size: 2rem;
-    color: rgb(4, 66, 19);
-    border-radius: 5px;
-    box-sizing: border-box;
+    color: rgb(16, 24, 18);
+    font-weight: 500;
 }
 

@@ -2,7 +2,6 @@ let error = document.getElementById("error");
 let regBtn = document.getElementById('btn-reg');
 
 const success = document.querySelector('form');
-
 const Name = document.getElementById('inputName');
 const Surname = document.getElementById('inputSurname');
 const Mail = document.getElementById('inputMail');
@@ -84,11 +83,20 @@ Name.addEventListener('keyup', function () {
 
     
 success.addEventListener('submit', function(e) {
-error.innerHTML = "";
+    error.innerHTML = "";
+    let welcome = document.getElementById ('welcome');
     e.preventDefault();
+    welcome.innerHTML = "";
+
     if (regBtn.disabled == false) {
-        let welcome = document.getElementById ('welcome')
+        
         welcome.innerHTML += "Добро пожаловать," + " " + Name.value + "!";
+        success.style.display = 'none';
+        
+        let hiddens = document.getElementsByClassName('hidden_content');
+        for( let i = 0; i < hiddens.length; i++){            // проходим циклом по всем элементам объекта
+            hiddens[i].style.display = 'none';                  
+        }		
     } 
 });
 

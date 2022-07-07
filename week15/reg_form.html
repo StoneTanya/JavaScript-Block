@@ -27,13 +27,13 @@
 
                     <img src="assets/img/logo.png" alt="logo" class="logo">
 
-                    <h5 class="modal-title" id="exampleModalLabel">РЕГИСТРАЦИЯ</h5>
+                    <h5 class="modal-title hidden_content" id="exampleModalLabel">РЕГИСТРАЦИЯ</h5>
                     <button type="button" class="btn-close btn-close_modal" data-bs-dismiss="modal"
                         aria-label="Закрыть"></button>
                 </div>
 
                 <!-- Тело модального окна -->
-                <div class="modal-body container">
+                <div class="modal-body container hidden_content">
                     
                             <form id="regform" class="row justify-content-center" novalidate>
                             <label for="Name" class="col-md-5">ИМЯ
@@ -63,14 +63,14 @@
 
                             <div id="error" class="text-center"></div>
                             <button type="submit" class="col-10" id="btn-reg">ЗАРЕГИСТРИРОВАТЬСЯ</button>
-                            <div id="welcome" class="text-center">  </div> 
                         </form>
                 </div>
 
                 <!-- Футер модального окна -->
-                <div class="modal-footer d-flex justify-content-center align-items-center">
-                    <a class="link-for-customer">УЖЕ ЗАРЕГИСТРИРОВАНЫ? ВОЙТИ</a>
+                <div class="modal-footer d-flex justify-content-center align-items-center hidden_content">
+                    <a class="link-for-customer hidden_content">УЖЕ ЗАРЕГИСТРИРОВАНЫ? ВОЙТИ</a>
                 </div>
+                <div id="welcome" class="d-flex justify-content-center align-items-center">  </div> 
             </div>
         </div>
     </div>
