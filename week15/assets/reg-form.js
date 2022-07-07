@@ -9,7 +9,6 @@ const Mail = document.getElementById('inputMail');
 const Phone = document.getElementById('inputPhone');
 const Password = document.getElementById('inputPassword');
 
-error.innerHTML = "";
 
 let letters = /^[A-Za-z]+$/;
 let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -17,6 +16,8 @@ let numbers = /^[0-9]+$/;
 
 
 regBtn.addEventListener('click', function () {
+error.innerHTML = "";
+
     if (Name.value === ''  || Name.value.length >= 15 || Name.value.length < 2) {
         error.innerHTML += "Имя не заполнено<br>";
         regBtn.disabled = true;
@@ -70,8 +71,20 @@ regBtn.addEventListener('click', function () {
     }
 });
 
+Name.addEventListener('keyup', function () {
+    error.innerHTML = "";
+        if (Name.value.match(numbers)) {
+            error.innerHTML += "Недопустимые значения в поле Имя<br>";
+            regBtn.disabled = true;
+        } else {
+            error.innerHTML += "";
+            regBtn.disabled = false;
+        }
+    });
 
+    
 success.addEventListener('submit', function(e) {
+error.innerHTML = "";
     e.preventDefault();
     if (regBtn.disabled == false) {
         let welcome = document.getElementById ('welcome')
@@ -81,17 +94,8 @@ success.addEventListener('submit', function(e) {
 
 
 
-/*
-Name.addEventListener('keyup', function (event) {
-    if (Name.value.match(letters)) {
-        error.innerHTML += "";
-    } else {
-        error.innerHTML += "Недопустимые значения в поле Имя<br>";
-        regBtn.disabled = true;
-    }
-});
 
-*/
+
 
 
 
