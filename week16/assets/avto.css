@@ -1,0 +1,77 @@
+main {
+    height: 50%;
+}
+
+.footer {
+    height: 30vh;
+    background-color:lightslategrey;
+}
+
+#result {
+    background-color: rgb(23, 121, 207);
+    color: #fff;
+    max-width: max-content;
+}
+
+.intro_block {
+    background-color: rgba(241, 238, 238, 0.823);
+}
+
+.img_block {
+    max-width: 80%;
+}
+
+.image_main {
+    max-width: 100%;
+}
+
+.btn-success {
+    margin-bottom: 5%;
+}
+.formSection__ColorItem {
+    border-radius: 50%;
+    color: #fff;
+    content: "";
+    cursor: pointer;
+    display: inline-block;
+    height: 42px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    vertical-align: middle;
+    width: 42px;
+}
+
+.formSection__ColorItem_red {
+    background-color: red;
+}
+
+.formSection__ColorItem_green {
+    background-color: green;
+}
+
+.formSection__ColorItem_yellow {
+    background-color: yellow;
+}
+
+.formSection__ColorItem_blue {
+    background-color: blue;
+}
+
+.formSection__ColorItem_purple {
+    background-color: purple;
+}
+
+.formSection__ColorItem_black {
+    background-color: black;
+}
+.formSection__ColorItem_white {
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.formSection__ColorItem_gray {
+    background-color: gray;
+}
+.formSection__ColorItem_pink {
+    background-color: pink;
+}
