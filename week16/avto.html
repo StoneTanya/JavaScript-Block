@@ -28,27 +28,27 @@
 
         <form class="row gy-3" id="form">
             <div class="col-5">
-                <select class="form-select" size="1" aria-label="Пример выбора по умолчанию">
-                    <option selected>Марка авто</option>
-                    <option value="1">Audi</option>
-                    <option value="2">BMW</option>
-                    <option value="3">Dodge</option>
-                    <option value="3">Ford</option>
-                    <option value="3">Jaguar</option>
-                    <option value="3">Lexus</option>
-                    <option value="3">Mercedes</option>
-                    <option value="3">Toyota</option>
-                    <option value="3">Nissan</option>
-                    <option value="3">Porsche</option>
-                    <option value="3">Volvo</option>
-                    <option value="3">Mazda</option>
+                <select class="form-select" size="1" aria-label="Пример выбора по умолчанию" id="autoMark">
+                    <option selected value="0">Марка авто</option>
+                    <option id="audi" value="2000000">Audi</option>
+                    <option id="bmw" value="2300000">BMW</option>
+                    <option id="dodge" value="3000000">Dodge</option>
+                    <option id="ford" value="1500000">Ford</option>
+                    <option id="jaguar" value="4000000">Jaguar</option>
+                    <option id="lexus" value="2500000">Lexus</option>
+                    <option id="mercedes" value="2700000">Mercedes</option>
+                    <option id="toyota" value="1800000">Toyota</option>
+                    <option id="nissan" value="1200000">Nissan</option>
+                    <option id="porsche" value="3500000">Porsche</option>
+                    <option id="volvo" value="3200000">Volvo</option>
+                    <option id="mazda" value="900000">Mazda</option>
                 </select>
             </div>
 
             <div class="col-3 formSection__Milage">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Пробег</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
+                    <input type="text" class="form-control" aria-label="Sizing example input" id="Milage"
                         aria-describedby="inputGroup-sizing-default" placeholder="км">
                 </div>
             </div>
@@ -57,28 +57,22 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Год выпуска</span>
                     <input type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default" placeholder="год">
+                        aria-describedby="inputGroup-sizing-default" placeholder="год" id="year" min="1980" max="2022">
                 </div>
             </div>
 
             <div class="col-4 formSection__Transmission">
                 <p>Коробка передач</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transmission" id="automatic" checked>
+                    <input class="form-check-input" type="radio" name="transmission" id="automatic" value="200000" checked>
                     <label class="form-check-label" for="automatic">
-                        Автоматическая
+                        Автоматическая 
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transmission" id="manual">
+                    <input class="form-check-input" type="radio" name="transmission" id="manual" value="0">
                     <label class="form-check-label" for="manual">
                         Механическая
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transmission" id="robot">
-                    <label class="form-check-label" for="robot">
-                        Робот
                     </label>
                 </div>
             </div>
@@ -86,48 +80,39 @@
             <div class="col-4 formSection__Motor">
                 <p>Двигатель</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="motor" id="petrol" checked>
+                    <input class="form-check-input MotorType" type="radio" name="motor" id="petrol" value="0" checked>
                     <label class="form-check-label" for="petrol">
                         Бензин
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="motor" id="diesel">
+                    <input class="form-check-input MotorType" type="radio" name="motor" id="diesel" value="150000">
                     <label class="form-check-label" for="diesel">
                         Дизель
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="motor" id="gybrid">
+                    <input class="form-check-input MotorType" type="radio" name="motor" id="gybrid" value="330000">
                     <label class="form-check-label" for="gybrid">
                         Гибрид
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="motor" id="gas">
-                    <label class="form-check-label" for="gas">
-                        Газ
                     </label>
                 </div>
             </div>
             <div class="col-10 formSection__ColorList mb-5">
                 <p>Укажите цвет авто</p>
-                <div class="formSection__ColorItem formSection__ColorItem_red"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_green"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_yellow"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_blue"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_purple"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_white"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_black"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_gray"></div>
-                <div class="formSection__ColorItem formSection__ColorItem_pink"></div>
+                <button class="formSection__ColorItem formSection__ColorItem_red" data-name="red" value="1000"></button>
+                <button class="formSection__ColorItem formSection__ColorItem_green" data-name="green" value="2500"></button>
+                <button class="formSection__ColorItem formSection__ColorItem_yellow" data-name="yellow" value="2000"></button>
+                <button class="formSection__ColorItem formSection__ColorItem_purple" data-name="purple" value="5000"></button>
+                <button class="formSection__ColorItem formSection__ColorItem_black" data-name="black" value="0"></button>
+                <button class="formSection__ColorItem formSection__ColorItem_pink" data-name="pink" value="3000"></button>
             </div>
             </div>
         </form>
-        <button type="button" class="btn btn-success">Рассчитать стоимость</button>
+        <div class="col-12 mb-3 alert"><span id="calc-result">0.0</span> <span class="rub">₽</span></div>
+        <button type="button" class="btn btn-success" id="calc-button">Рассчитать стоимость</button>
     </main>
 
 

@@ -13,6 +13,10 @@ main {
     max-width: max-content;
 }
 
+.alert {
+    font-size: 24px;
+}
+
 .intro_block {
     background-color: rgba(241, 238, 238, 0.823);
 }
