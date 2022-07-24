@@ -8,15 +8,20 @@ fullName.addEventListener('input', function formatFio(evt) {
     let name = nameSplit[1];              // забираю из массива Имя
     let patronymic = nameSplit[2];    // забираю из массива Отчество
 
-    let f = surname[0].toUpperCase() + surname.slice(1).toLowerCase();
-    document.querySelector('#F').value = f;
+    console.log(surname);
+    console.log(nameSplit);
 
-    let i = name[0].toUpperCase() + name.slice(1).toLowerCase();
+    let f = surname[0].toUpperCase() + surname.slice(1).toLowerCase();           
+    document.querySelector('#F').value = f;                                           
+
+    let i = name[0].toUpperCase() + name.slice(1).toLowerCase();              // Почему в консоли ошибка? 
     document.querySelector('#I').value = i;
 
-    let o = patronymic[0].toUpperCase() + patronymic.slice(1).toLowerCase();
+    let o = patronymic[0].toUpperCase() + patronymic.slice(1).toLowerCase();              
     document.querySelector('#O').value = o;
 });
+
+
 
 // задание № 2
 
@@ -25,50 +30,37 @@ fullName.addEventListener('input', function formatFio(evt) {
 // задание № 3
 
 function formatDate () {
-    let date = new Date();
-    console.log(date);
-    let hour = date.getHours();
-    let minute = date.getMinutes();
-    let second = date.getSeconds();
+    let publishDate = document.getElementsByClass('publishDate');            // какая-то дата, например, дата публикации материла на сайт, будет сравниваться с now
+    let now = new Date();
+    let diff = now - publishDate;
+    console.log(now);
+
     let message = '';
 
-    if (second + 1) {
+    if (diff < 1000) {
         message = 'Прямо сейчас';
-    } else if (minute < minute + 1) {
-        message = second + ' ' + 'назад';
-    } else if (hour < hour + 1) {
-        message = minute + ' ' + 'назад';
+    } else if (diff < 60000) {
+        message = diff / 1000 + ' сек. назад';
+    } else if (diff < 3600000) {
+        message = diff / 60000 + ' мин. назад';
     } else {
-        // выполним форматирование времени с использованием тернарного оператора
+        let year = now.getFullYear() % 100;
+        let month = now.getMonth() + 1;
+        let day = now.getDate();
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let second = now.getSeconds();
+        
+        day = (day < 10) ? '0' + day : day;
+        month = (month < 10) ? '0' + month : month;
         minute = (minute < 10) ? '0' + minute : minute;
         second = (second < 10) ? '0' + second : second;
         hour = (hour < 10) ? '0' + hour : hour;
-        message += ', сейчас ' + hour + ':' + minute + ':' + second;
+        message = day + '.' + month + '.' +  year + ', ' +  hour + ':' + minute;
     }
     console.log(message);
 }
 formatDate();
-
-
-
-
-
-// выведем приветствие и время в консоль
-// console.log(message); // Добрый вечер, сейчас 22:50:39
-
-
-
-// formatDate(new Date(new Date - 1)); // "прямо сейчас"
-
-// formatDate(new Date(new Date - 30 * 1000)); // "30 сек. назад"
-
-// formatDate(new Date(new Date - 5 * 60 * 1000)); // "5 мин. назад"
-
-
-
-
-
-
 
 
 
@@ -92,8 +84,12 @@ randomButton.addEventListener('click', function randomNumbers() {
         average = sum / 10;                         //  находим среднее арифметическое
     }
     let numbersString = numbers.join();            //  склеиваем из массива строку для вывода на страницу
-
+    let minimal = Math.min(numbers);        //    не работает !!!!!!!!!!!
+    let maximum = Math.max(numbers);        //    не работает  !!!!!!!!!!!
+    
     document.getElementById('randomResult').innerHTML = numbersString;
+    document.getElementById('minItem').innerHTML = minimal;
+    document.getElementById('maxItem').innerHTML = maximum;
     document.getElementById('sum').innerHTML = sum;
     document.getElementById('multi').innerHTML = multi;
     document.getElementById('average').innerHTML = average;
@@ -105,9 +101,3 @@ randomButton.addEventListener('click', function randomNumbers() {
 
 
 
-// let date = new Date();
-// console.log(date);
-// let tomorrow = new Date(2022, 6, 25);
-// console.log(tomorrow);
-// let seconds = (+tomorrow - +date) / 1000
-// console.log(seconds);
