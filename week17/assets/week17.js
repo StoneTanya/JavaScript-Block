@@ -1,4 +1,4 @@
-// переменные и функции для вывода ФИО на страницу
+// ЗАДАНИЕ  № 1 - вывод ФИО на страницу
 let fullName = document.getElementById('hello-name');
 
 fullName.addEventListener('input', function formatFio(evt) {
@@ -19,6 +19,8 @@ fullName.addEventListener('input', function formatFio(evt) {
 });
 
 
+
+// ЗАДАНИЕ № 3 - Генератор случайный чисел
 const randomButton = document.getElementById('randomButton');
 let from = document.getElementById('from');
 let to = document.getElementById('to');
@@ -30,23 +32,18 @@ randomButton.addEventListener ('click', function randomNumbers () {
     let sum = 0;
     let multi = 1;
 
-    for(let i = 0; i <= 9; i++) {                                      //9 итераций, чтобы в массив добавилось 10 чисел
+    for(let i = 0; i <= 9; i++) {                    //9 итераций, чтобы в массив добавилось 10 чисел
         let randomNumber = Math.floor(Math.random() * (max - +min +1)) + +min;             
         numbers.push(randomNumber);
-        sum += randomNumber;                   //  суммируем сгенерированные числа
-        multi *= randomNumber;                 //  перемножаем сгенерированные числа
-        avarage = sum / 10;                                //  находим среднее арифметическое
+        sum += randomNumber;                        //  суммируем сгенерированные числа
+        multi *= randomNumber;                      //  перемножаем сгенерированные числа
+        average = sum / 10;                         //  находим среднее арифметическое
     }
+    let numbersString = numbers.join();            //  склеиваем из массива строку для вывода на страницу
 
-    numbers.forEach(element => let numbersList = );
-
-    console.log(numbers);
-    console.log(sum);
-    console.log(multi);
-    console.log(avarage);
-
-});
-
-
-
+    document.getElementById('randomResult').innerHTML = numbersString;
+    document.getElementById('sum').innerHTML = sum;
+    document.getElementById('multi').innerHTML = multi;
+    document.getElementById('average').innerHTML = average;
+})
 
