@@ -1,3 +1,4 @@
+'use strict';
 // ЗАДАНИЕ  № 1 - вывод ФИО на страницу
 let fullName = document.getElementById('hello-name');
 
@@ -22,14 +23,15 @@ fullName.addEventListener('input', function formatFio(evt) {
 // задание № 2
 
 let comments = [];
-let addComment = document.getElementById('comment-add'); 
+let addComment = document.getElementById('comment-add');
+let commentField = document.getElementById('comment-field');
 
 addComment.addEventListener('click', function addComments(event) {
     event.preventDefault();
     let commentBody = document.getElementById('comment-body');
     let comment = {
         body: commentBody.value,
-        time: Math.floor(Date.now()/1000)
+        time: Math.floor(Date.now() / 1000)
     }
     commentBody.value = '';
     comments.push(comment);
@@ -41,10 +43,10 @@ function saveComments() {
     localStorage.setItem('comments', JSON.stringify(comments));
 }
 
-function showComments () {
-    let commentField = document.getElementById('comment-field');
+
+function showComments() {
     let out = '';
-    comments.forEach(function(item) {
+    comments.forEach(function (item) {
         out += `<p class ="text-right small">${timeConverter(item.time)}</p>`;
         out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;
     });
@@ -70,12 +72,24 @@ function timeConverter(UNIX_timestamp) {
 }
 
 function checkSpam() {
-    let commentString = comments.map(({body}) => `${[body]}`).join('');
-    let filteredString = commentString.replace('xxx', '***');
-    console.log(filteredString);
-    return filteredString;
-}
+    const spamWords = ['xxx', 'viagra'];
+    const commentBodyString = comments.map(el => el.body).join(' ').toLowerCase();
+    console.log(commentBodyString);
+    const commentBodyWords = commentBodyString.split(' ');
+    console.log(commentBodyWords);
 
+
+    for (const word of commentBodyWords) {
+        for (const spamWord of spamWords) {
+            if (word === spamWord) {
+                let filteredString = commentBodyString.replace(spamWord, '***');
+                return(filteredString);
+            }
+        }
+    }
+    let filteredString = commentBodyString;
+    return(filteredString);
+}
 
 
 // задание № 3
@@ -84,7 +98,7 @@ function formatDate() {
     // eventDate - это какая-то дата, которая будет вводиться, например, при публикации материла на сайт. 
     // Она будет сравниваться с now. Для примера указала дату, близкую к now.  
 
-    let eventDate = new Date(2022, 6, 24, 20, 05);
+    let eventDate = new Date(2022, 6, 25, 20, 5);
     let now = new Date();
     let diff = now - eventDate;
     console.log(now);
@@ -130,16 +144,16 @@ randomButton.addEventListener('click', function randomNumbers() {
     let sum = 0;
     let multi = 1;
 
-    for (let i = 0; i <= 9; i++) { //9 итераций, чтобы в массив добавилось 10 чисел
+    for (let i = 0; i <= 9; i++) {              //9 итераций, чтобы в массив добавилось 10 чисел
         let randomNumber = Math.floor(Math.random() * (max - +min + 1)) + +min;
         numbers.push(randomNumber);
-        sum += randomNumber; //  суммируем сгенерированные числа
-        multi *= randomNumber; //  перемножаем сгенерированные числа
-        average = sum / 10; //  находим среднее арифметическое
+        sum += randomNumber;                 //  суммируем сгенерированные числа
+        multi *= randomNumber;                //  перемножаем сгенерированные числа
+        average = sum / 10;                  //  находим среднее арифметическое
     }
-    let numbersString = numbers.join(); //  склеиваем из массива строку для вывода на страницу
-    let minimal = Math.min(numbers); //    не работает !!!!!!!!!!!
-    let maximum = Math.max(numbers); //    не работает  !!!!!!!!!!!
+    let numbersString = numbers.join();       //  склеиваем из массива строку для вывода на страницу
+    let minimal = Math.min(...numbers);       //    найти минимальное значение
+    let maximum = Math.max(...numbers);       //    найти максимальное значение
 
     document.getElementById('randomResult').innerHTML = numbersString;
     document.getElementById('minItem').innerHTML = minimal;
