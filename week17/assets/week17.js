@@ -21,19 +21,23 @@ fullName.addEventListener('input', function formatFio(evt) {
 
 
 // задание № 2
-
 let comments = [];
 let addComment = document.getElementById('comment-add');
-let commentField = document.getElementById('comment-field');
-
+loadComments();
 addComment.addEventListener('click', function addComments(event) {
     event.preventDefault();
     let commentBody = document.getElementById('comment-body');
+    let commentName = document.getElementById('comment-name');
+    let commentAvatar = document.getElementById('comment-avatar');
     let comment = {
+        name: commentName.value,
+        photo: commentAvatar.value,
         body: commentBody.value,
         time: Math.floor(Date.now() / 1000)
     }
     commentBody.value = '';
+    commentName.value = '';
+    commentAvatar.value = '';
     comments.push(comment);
     saveComments();
     showComments();
@@ -43,12 +47,19 @@ function saveComments() {
     localStorage.setItem('comments', JSON.stringify(comments));
 }
 
+function loadComments() {
+    if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
+    showComments();
+}
 
 function showComments() {
+    let commentField = document.getElementById('comment-field');
     let out = '';
     comments.forEach(function (item) {
         out += `<p class ="text-right small">${timeConverter(item.time)}</p>`;
+        out += `<p class ="alert alert-primary"> <img src="${item.photo}" style="width:100px"> ${item.name}</p>`;
         out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;
+        console.log(item.photo);
     });
     commentField.innerHTML = out;
 }
@@ -73,13 +84,12 @@ function timeConverter(UNIX_timestamp) {
 
 function checkSpam() {
     const spamWords = ['xxx', 'viagra'];
-    const commentBodyString = comments.map(el => el.body).join(' ').toLowerCase();
+    const commentBodyString = comments.map(el => el.body);
     console.log(commentBodyString);
-    const commentBodyWords = commentBodyString.split(' ');
-    console.log(commentBodyWords);
+    // const commentBodyWords = commentBodyString.split(' ');
+    // console.log(commentBodyWords);
 
-
-    for (const word of commentBodyWords) {
+    for (const word of commentBodyString) {
         for (const spamWord of spamWords) {
             if (word === spamWord) {
                 let filteredString = commentBodyString.replace(spamWord, '***');
@@ -150,11 +160,11 @@ randomButton.addEventListener('click', function randomNumbers() {
         sum += randomNumber;                 //  суммируем сгенерированные числа
         multi *= randomNumber;                //  перемножаем сгенерированные числа
         average = sum / 10;                  //  находим среднее арифметическое
+        minimal = Math.min(...numbers);       //    найти минимальное значение
+        maximum = Math.max(...numbers);       //    найти максимальное значение
     }
     let numbersString = numbers.join();       //  склеиваем из массива строку для вывода на страницу
-    let minimal = Math.min(...numbers);       //    найти минимальное значение
-    let maximum = Math.max(...numbers);       //    найти максимальное значение
-
+    
     document.getElementById('randomResult').innerHTML = numbersString;
     document.getElementById('minItem').innerHTML = minimal;
     document.getElementById('maxItem').innerHTML = maximum;
