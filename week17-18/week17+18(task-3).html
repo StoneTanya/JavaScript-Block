@@ -72,22 +72,30 @@
                 <h2 class="text-center task-number">Задание № 2 - Comments</h2>
             </div>
 
+            <div class="col-lg-6">
+                <form>
+                    <div class="input-group input-group-lg mb-3">
+                        <label for="comment-name" class="mb-3">Ваше имя:
+                            <input id="comment-name" name="comment-name" type="text" placeholder="Your name">
+                        </label>
+                        <label for="comment-avatar" class="mb-3">Загрузить фото:
+                            <input id="comment-avatar" name="comment-avatar" type="text" placeholder="Link to avatar">
+                        </label>
+                        <label for="comment-name" class="mb-3">Введите комментарий:
+                            <input id="comment-body" name="comment-name" type="text" placeholder="Your comment">
+                        </label>
+                    </div>
+
+                    <div class="input-group input-group-lg mb-3">
+                        <button class="btn btn-secondary" type="submit" id="comment-add">Отправить</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="mb-3 col-lg-6" >
                 <div id="comment-field"></div>
             </div>
 
-            <div class="col-lg-6">
-                <form>
-                    <div class="input-group input-group-lg mb-3">
-                        <span class="input-group-text">Комментарий</span>
-                        <textarea class="form-control" id="comment-body" aria-label="С текстовым полем" placeholder="Your comment"></textarea>
-                    </div>
-
-                    <div class="input-group input-group-lg mb-3">
-                        <button class="btn btn-outline-secondary" type="submit" id="comment-add">Отправить</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 

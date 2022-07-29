@@ -73,3 +73,21 @@ function timeConverter(UNIX_timestamp) {
 // });
 
 
+// function checkSpam() {
+//     const spamWords = ['xxx', 'viagra'];
+//     const commentBodyString = comments.map(el => el.body);
+//     console.log(commentBodyString);
+//     // const commentBodyWords = commentBodyString.split(' ');
+//     // console.log(commentBodyWords);
+
+//     for (const word of commentBodyString) {
+//         for (const spamWord of spamWords) {
+//             if (word === spamWord) {
+//                 let filteredString = commentBodyString.replace(spamWord, '***');
+//                 return(filteredString);
+//             }
+//         }
+//     }
+//     let filteredString = commentBodyString;
+//     return(filteredString);
+// }

@@ -8,30 +8,41 @@ fullName.addEventListener('input', function formatFio(evt) {
     let name = nameSplit[1]; // забираю из массива Имя
     let patronymic = nameSplit[2]; // забираю из массива Отчество
 
-    let f = surname[0].toUpperCase() + surname.slice(1).toLowerCase();
-    document.querySelector('#F').value = f;
+    if (!!surname) {
+        let f = surname[0].toUpperCase() + surname.slice(1).toLowerCase();
+        document.querySelector('#F').value = f;
+    }
+    if (!!name) {
+        let i = name[0].toUpperCase() + name.slice(1).toLowerCase(); 
+        document.querySelector('#I').value = i;
+    }
 
-    let i = name[0].toUpperCase() + name.slice(1).toLowerCase(); // Почему в консоли ошибка? 
-    document.querySelector('#I').value = i;
-
-    let o = patronymic[0].toUpperCase() + patronymic.slice(1).toLowerCase();
-    document.querySelector('#O').value = o;
+    if (!!patronymic) {
+        let o = patronymic[0].toUpperCase() + patronymic.slice(1).toLowerCase();
+        document.querySelector('#O').value = o;
+    }
 });
 
 
 // задание № 2
-
 let comments = [];
-let addComment = document.getElementById('comment-add'); 
+let addComment = document.getElementById('comment-add');
+loadComments();
 
 addComment.addEventListener('click', function addComments(event) {
     event.preventDefault();
     let commentBody = document.getElementById('comment-body');
+    let commentName = document.getElementById('comment-name');
+    let commentAvatar = document.getElementById('comment-avatar');
     let comment = {
+        name: commentName.value,
+        photo: commentAvatar.value,
         body: commentBody.value,
-        time: Math.floor(Date.now()/1000)
+        time: Math.floor(Date.now() / 1000)
     }
     commentBody.value = '';
+    commentName.value = '';
+    commentAvatar.value = '';
     comments.push(comment);
     saveComments();
     showComments();
@@ -41,11 +52,17 @@ function saveComments() {
     localStorage.setItem('comments', JSON.stringify(comments));
 }
 
-function showComments () {
+function loadComments() {
+    if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
+    showComments();
+}
+
+function showComments() {
     let commentField = document.getElementById('comment-field');
     let out = '';
-    comments.forEach(function(item) {
+    comments.forEach(function (item) {
         out += `<p class ="text-right small">${timeConverter(item.time)}</p>`;
+        out += `<p class ="alert alert-primary"> <img src="${item.photo}" style="width:100px"> ${item.name}</p>`;
         out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;
     });
     commentField.innerHTML = out;
@@ -75,7 +92,6 @@ function checkSpam() {
     console.log(filteredString);
     return filteredString;
 }
-
 
 
 // задание № 3
@@ -138,8 +154,8 @@ randomButton.addEventListener('click', function randomNumbers() {
         average = sum / 10; //  находим среднее арифметическое
     }
     let numbersString = numbers.join(); //  склеиваем из массива строку для вывода на страницу
-    let minimal = Math.min(numbers); //    не работает !!!!!!!!!!!
-    let maximum = Math.max(numbers); //    не работает  !!!!!!!!!!!
+    let minimal = Math.min(...numbers); //     найти минимальное значение
+    let maximum = Math.max(...numbers); //    найти максимальное значение
 
     document.getElementById('randomResult').innerHTML = numbersString;
     document.getElementById('minItem').innerHTML = minimal;
@@ -148,8 +164,3 @@ randomButton.addEventListener('click', function randomNumbers() {
     document.getElementById('multi').innerHTML = multi;
     document.getElementById('average').innerHTML = average;
 })
-
-
-
-
-
