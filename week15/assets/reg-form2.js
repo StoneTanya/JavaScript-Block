@@ -1,6 +1,7 @@
 let error = document.getElementById("error");
 let regBtn = document.getElementById('btn-reg');
 
+const success = document.querySelector('form');
 const Name = document.getElementById('inputName');
 const Surname = document.getElementById('inputSurname');
 const Mail = document.getElementById('inputMail');
@@ -39,7 +40,7 @@ const inputData = [
             notValue: "Телефон не заполнен<br>",
             invalidValue: "Вы ввели некорректный номер телефона<br>"
         },
-        template: /^[0-9]+$/
+        template: /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/
     },
     {
         html: Password,
@@ -50,9 +51,6 @@ const inputData = [
         template: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
     }
 ]
-
-
-
 
 function checkValue(value, matchTemplate, errors) {
     // console.log('check input', value, matchTemplate, errors)
@@ -68,18 +66,13 @@ function checkValue(value, matchTemplate, errors) {
     }
 }
 
-
-function welcome() {
-    console.log("result")
-}
-
 regBtn.addEventListener('click', function () {
     error.innerHTML = "";
     for (let i = 0; i < inputData.length; i++) {
         let input = inputData[i]
         checkValue(input.html.value, input.template, input.errors)
     }
-    welcome();
+    success();
 });
 
 for (let i = 0; i < inputData.length; i++) {
@@ -90,4 +83,20 @@ for (let i = 0; i < inputData.length; i++) {
     })
 }
 
+success.addEventListener('submit', function(e) {
+    error.innerHTML = "";
+    let welcome = document.getElementById ('welcome');
+    e.preventDefault();
+    welcome.innerHTML = "";
 
+    if (regBtn.disabled == false) {
+        
+        welcome.innerHTML += "Добро пожаловать," + " " + Name.value + "!";
+        success.style.display = 'none';
+        
+        let hiddens = document.getElementsByClassName('hidden_content');
+        for( let i = 0; i < hiddens.length; i++){            // проходим циклом по всем элементам объекта
+            hiddens[i].style.display = 'none';                  
+        }		
+    } 
+});

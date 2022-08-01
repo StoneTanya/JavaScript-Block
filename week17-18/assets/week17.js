@@ -24,7 +24,7 @@ fullName.addEventListener('input', function formatFio(evt) {
 });
 
 
-// задание № 2
+// задание № 2 -  КОММЕНТАРИИ со спам фильтром и загрузкой в local storage
 let comments = [];
 let addComment = document.getElementById('comment-add');
 loadComments();
@@ -53,9 +53,11 @@ function saveComments() {
 }
 
 function loadComments() {
-    if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
-    showComments();
+        if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
+        showComments();
 }
+
+
 
 function showComments() {
     let commentField = document.getElementById('comment-field');
@@ -63,7 +65,7 @@ function showComments() {
     comments.forEach(function (item) {
         out += `<p class ="text-right small">${timeConverter(item.time)}</p>`;
         out += `<p class ="alert alert-primary"> <img src="${item.photo}" style="width:100px"> ${item.name}</p>`;
-        out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;
+        out += `<p class ="alert alert-success">${item.body}</p>`;            //out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;
     });
     commentField.innerHTML = out;
 }
@@ -86,15 +88,25 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
-function checkSpam() {
-    let commentString = comments.map(({body}) => `${[body]}`).join('');
-    let filteredString = commentString.replace('xxx', '***');
-    console.log(filteredString);
-    return filteredString;
-}
+
+// function checkSpam() {
+//         const commentBodyString = localStorage.getItem('comments');
+//         let filteredString = commentBodyString.replace('xxx', '***');
+//         comments = JSON.parse(filteredString);
+//         console.log(comments);
+// }
 
 
-// задание № 3
+// function checkSpam() {
+//     let commentString = comments.map(({body}) => `${[body]}`).join('');
+//     console.log(commentString);
+//     let filteredString = commentString.replace('xxx', '***');
+//     console.log(filteredString);
+// }
+
+
+
+// задание № 3 - ВЫВОД ДАТЫ В ОТФОРМАТИРОВАННОМ ВИДЕ
 
 function formatDate() {
     // eventDate - это какая-то дата, которая будет вводиться, например, при публикации материла на сайт. 
@@ -134,7 +146,7 @@ formatDate();
 
 
 
-// ЗАДАНИЕ № 4 - Генератор случайных чисел
+// ЗАДАНИЕ № 4 - Генератор случайных чисел, арифметика с ними
 const randomButton = document.getElementById('randomButton');
 let from = document.getElementById('from');
 let to = document.getElementById('to');

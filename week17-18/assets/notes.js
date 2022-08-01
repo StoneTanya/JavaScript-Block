@@ -2,63 +2,65 @@ loadNotes();
 const submitBtn = document.getElementById('addBtn');
 const notes = [];
 
+// функция создания заметки и помещение ее в Local storage
 submitBtn.addEventListener('click', function addNotes(event) {
     event.preventDefault();
     let noteText = document.getElementById('addNote');
     let notesString = localStorage.getItem('notes');
 
+	 //дата создания заметки
+	let now = new Date();
+	let dateTime = `${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()} | ${now.getHours()}:${now.getMinutes()}`;
+
+   //создаем объект и отправляем данные (заметку и время) в local storage
+    let tempObj = {
+		text: addNote.value,
+		time: dateTime
+	};
+	
     if(notesString === null){
         notesObj = [];
     } else {
         notesObj = JSON.parse(notesString);
     }
 
-    //Add date
-	let now = new Date();
-	let dateTime = `${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()} | ${now.getHours()}:${now.getMinutes()}`;
-
-    //pushing into local storage
-    let tempObj = { text: addNote.value, time: dateTime };
     notesObj.push(tempObj);
-	localStorage.setItem('notes',JSON.stringify(notesObj));
+	localStorage.setItem('notes', JSON.stringify(notesObj));
     noteText.value = '';
     loadNotes();
 });
 
-// funtion to display data stored in the local storage
-
+// функция выгрузки заметок из local storage
 function loadNotes() {
     let notesObj;
     let notesString = localStorage.getItem('notes');
-    if (notesString == null) {
+    if (notesString === null) {
         notesObj = [];
     } else {
         notesObj = JSON.parse(notesString);
     }
-    let html = '';
+    let out = '';
 
     notesObj.forEach(function(element,index) {
-        html += `
-        <div class="card mx-4 my-2 bg-dark text-white thatsMyNote" style="width: 18rem;">
+        out += `
+        <div class="card mx-4 my-2 text-bg-info p-3 thatsMyNote" style="width: 18rem;">
 					<div class="card-body">
 						<h6>${element.time}</h6>
 						<p class="card-text">${element.text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
-						<button id="${index}" onclick=deleteNote(this.id) class="btn btn-danger">Delete</button>
+						<button id="${index}" onclick=deleteNote(this.id) class="btn text-bg-light p-3">Delete</button>
 					</div>
 				</div>
         `;
     });
-	let noteEle = document.getElementById('notes');
+	let noteField = document.getElementById('notes');    // вывод заметок в html, если нет заметок - показывать текст, что заметки отсутствуют
 	if(notesObj.length != 0){
-		noteEle.innerHTML = html;
-	}
-	else{
-		noteEle.innerHTML = '<h3 style="text-align: center; color: grey;">Nothing to display</h3>';
+		noteField.innerHTML = out;
+	} else {
+		noteField.innerHTML = '<h3 style="text-align: center; color: grey;">Нет ни одной заметки</h3>';
 	}
 }
 
-
-//function to delete a note
+//функция удаления заметок после выполнения
 function deleteNote(index){
 	let notesObj;
 	let notesString = localStorage.getItem('notes');
@@ -74,7 +76,7 @@ function deleteNote(index){
 }
 
 
-
+//функция поиска заметок
 let search = document.getElementById('search');
 search.addEventListener('input',function(e){
 	let inputText = search.value;
@@ -94,7 +96,7 @@ search.addEventListener('input',function(e){
 			elem.style.display = 'none';
 			countNone++;
 			if(countNone === cards.length){
-				document.getElementById('noMatches').innerHTML = '<h3 style="text-align: center; color: grey;">No matches found</h3>';
+				document.getElementById('noMatches').innerHTML = '<h3 style="text-align: center; color: grey;">Не найдено</h3>';
 			}
 			else{
 				document.getElementById('noMatches').innerHTML = '';
@@ -102,7 +104,6 @@ search.addEventListener('input',function(e){
 		}
 	});
 	
-	//Below code will be executed when the input text matches all the elements.
 	if(countNone === 0){
 		document.getElementById('noMatches').innerHTML = '';
 	}
