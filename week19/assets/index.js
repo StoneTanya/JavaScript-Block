@@ -21,15 +21,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 // //вопрос 4 
 // function bike() {
 //     console.log(this.name)

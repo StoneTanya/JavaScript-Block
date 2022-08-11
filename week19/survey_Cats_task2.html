@@ -1,72 +1,111 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Кото-анкета</title>
-        <link rel="shortcut icon" href="https://cdn-icons.flaticon.com/png/512/5267/premium/5267418.png?token=exp=1643556825~hmac=54f021b3794afea14e6920650da51008" type="image/png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+
+<head>
+    <title>Кото-анкета</title>
+    <link rel="shortcut icon"
+        href="https://cdn-icons.flaticon.com/png/512/5267/premium/5267418.png?token=exp=1643556825~hmac=54f021b3794afea14e6920650da51008"
+        type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
-        input:required:valid, select:required:valid {
+        input:required:valid,
+        select:required:valid {
             background-color: rgb(74, 182, 74);
         }
     </style>
 
-    </head>
+</head>
+
 <body>
     <h2>Сведения о питомце</h2>
     <form>
-    <ol>
-<li><label for="patsName">Кличка кошки&nbsp;</label>
-    <input type="text" id="patsName" name="name" placeholder="Кличка питомца" required/>
-</li>  
-<li>Имя владельца:</li>
-<fieldset>
-    <p><label for="firstName">Имя&nbsp;</label><input type="text" id="firstName" placeholder="Имя" required></p>
-    <p><label for="secondName">Фамилия&nbsp;</label><input type="text" id="secondName"></p>
-</fieldset>
-    <li>Адрес и контактный номер владельца:</li>
-<fieldset>
-    <p><label for="sity">Город&nbsp;</label><input type="text" id="sity"></p>
-    <p><label for="street">Улица&nbsp;</label><input type="text" id="street"></p>
-    <p><label for="house">Дом&nbsp;</label><input type="text" id="house"> </p>  
-    <p><label for="apartment">Квартира&nbsp;</label><input type="Number" id="apartment"> </p>  
-    <p><label for="tel">Номер телефона&nbsp;</label><input type="tel" id="tel" name="phone" placeholder="+7 (...) ...-..-.." minlength="10" maxlength="20"></p>   
-</fieldset>
-    <li>Порода кошки&nbsp;</li>
-        <select required>
-            <option value="">Выбрать</option> 
-            <option value="">Сиамская</option> 
-            <option value="">Персидская</option> 
-            <option value="">Британская</option>
-            <option value="">Норвежская лесная</option>
-            <option value="">Сфинкс</option>
-            <option value="">Мейн-кун</option>
-            <option value="">Регдолл</option>
-            <option value="">Метис</option>
-        </select>
-<li>Укажите, чем питается кошка</li></p>
-<input type="checkbox" name="food" value="1"/>Сухой корм
-<input type="checkbox" name="food" value="2"/>Влажный корм
-<input type="checkbox" name="food" value="3"/>Натуральный корм
-<li>Выберите пол:</li>
-<input type="radio" name="s" value="f" required/>Самка
-<input type="radio" name="s" value="m" required/>Самец
+        <ol>
+            <li><label for="patsName">Кличка кошки&nbsp;</label>
+                <input type="text" id="patsName" name="name" placeholder="Кличка питомца" required />
+            </li>
 
-<li><label for="years">Укажите возраст питомца:&nbsp;</label>
-<input type="Number" id="years" required> </li> 
-<li><label for="comments">Добавьте описание кошки, особые приметы или иной комментарий в поле ниже:</label></li>
-<textarea name="comments" id="comments" rows="4" cols="80"></textarea>
-<li> Вложите фото кошки <input type="file" name="foto"/></li>
-<button type="submit" class="btn btn-outline-primary" id="submitButton">Cохранить</button>
-</ol>
-</form>
+            <li>Имя владельца:</li>
+            <fieldset>
+                <p><label for="firstName">Имя&nbsp;</label><input type="text" id="firstName" placeholder="Имя" required>
+                </p>
+                <p><label for="secondName">Фамилия&nbsp;</label><input type="text" id="secondName"></p>
+            </fieldset>
+
+            <li>Адрес и контактный номер владельца:</li>
+            <fieldset>
+                <p><label for="sity">Город&nbsp;</label><input type="text" id="sity" name="adress"></p>
+                <p><label for="street">Улица&nbsp;</label><input type="text" id="street" name="adress"></p>
+                <p><label for="house">Дом&nbsp;</label><input type="text" id="house" name="adress"> </p>
+                <p><label for="apartment">Квартира&nbsp;</label><input type="Number" id="apartment" name="adress"> </p>
+                <p><label for="tel">Номер телефона&nbsp;</label><input type="tel" id="tel" name="phone"
+                        placeholder="+7 (...) ...-..-.." minlength="10" maxlength="20"></p>
+            </fieldset>
+
+            <li>Порода кошки&nbsp;</li>
+            <select class="form-select" size="1" aria-label="Пример выбора по умолчанию" id="breed">
+                <option selected value="">Выбрать</option>
+                <option value="Сиамская">Сиамская</option>
+                <option value="Персидская">Персидская</option>
+                <option value="Британская">Британская</option>
+                <option value="Норвежская лесная">Норвежская лесная</option>
+                <option value="Сфинкс">Сфинкс</option>
+                <option value="Мейн-кун">Мейн-кун</option>
+                <option value="Регдолл">Регдолл</option>
+                <option value="Метис">Метис</option>
+            </select>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-</script>
+            <li>Укажите, чем питается кошка</li>
 
-<script type="text/javascript" src="assets/survey_Cats.js">
-</script>
+            <div class="form-check">
+                <input class="form-check-input" name="food" type="checkbox" value="dry food" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Сухой корм
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="food" type="checkbox" value="wet food" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Влажный корм
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input"  name="food"type="checkbox" value="natural food" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Натуральный корм
+                </label>
+            </div>
+
+            <li>Выберите пол:</li>
+            <input class="form-check-input" type="radio" name="gender" id="female" value="female" />
+            <label class="form-check-label" for="female">
+                Самка
+            </label>
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male" />
+            <label class="form-check-label" for="male">
+                Самец
+            </label>
+
+            <li><label for="years">Укажите возраст питомца:&nbsp;</label>
+                <input type="Number" id="age" required> </li>
+
+            <li><label for="comments">Добавьте описание кошки, особые приметы или иной комментарий в поле ниже:</label>
+            </li>
+            <textarea id="comments" id="comments" rows="4" cols="80"></textarea>
+            <li> Вложите фото кошки <input type="file" id="photo" /></li>
+
+            <button type="submit" class="btn btn-outline-primary" id="submitButton">Cохранить</button>
+        </ol>
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript" src="assets/survey_Cats.js">
+    </script>
 </body>
+
 </html>
