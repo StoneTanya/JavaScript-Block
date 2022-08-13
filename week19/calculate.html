@@ -6,58 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/calculate.css">
-    <style>
-        body {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-color: antiquewhite;
-        }
-
-        input {
-            padding: 10px 20px;
-            margin: 5px 5px;
-            font-size: 24px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 5px 5px;
-            border-radius: 10px;
-            font-size: 24px;
-            border: none;
-            background-color: cadetblue;
-        }
-
-        .calc {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding-top: 5%;
-        }
-
-        #calc {
-            padding: 1% 2%;
-            margin-top: 3%;
-        }
-
-        #calc-button {
-            margin: 2%;
-            margin-left: 5%;
-        }
-
-        #result {
-            padding: 3% 5%;
-            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-            margin-bottom: 5%;
-            margin-top: 5%;
-            font-size: 24px;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style/calculate.css">
 </head>
 
-<body class="page light-theme">
-
+<body class="page">
     <div class="calc">
         <h4>Калькулятор</h4>
         <form class="calc-form">
@@ -78,62 +32,15 @@
             <input id="calc-num2" placeholder="Число 2" />
         </form>
 
-
         <button id="calc">=</button>
 
         <p id="result"></p>
     </div>
 
-
-
-    <script type="text/javascript">
-        const resultButton = document.getElementById('calc');
-
-        resultButton.addEventListener('click', function () {
-            let calculator = {
-                sum() {
-                    result = this.num1 + this.num2;
-                },
-                minus() {
-                    result = this.num1 - this.num2;
-                },
-                divide() {
-                    result = this.num1 / this.num2;
-                },
-                mult() {
-                    result = this.num1 * this.num2;
-                },
-                read() {
-                    this.num1 = Number(document.getElementById("calc-num1").value);
-                    this.num2 = Number(document.getElementById("calc-num2").value);
-                }
-            };
-
-            calculator.read();
-
-            switch (option) {
-                case '+':
-                    calculator.sum();
-                    break;
-                case '-':
-                    calculator.minus();
-                    break;
-
-                case '*':
-                    calculator.mult();
-                    break;
-
-                case '/':
-                    calculator.divide();
-                    if (this.num2 === 0) {
-                        result = ("На ноль делить нельзя!");
-                    }
-                    break;
-            }
-            document.getElementById("result").innerHTML = result;
-        });
+    <script type="text/javascript" src="assets/JS/calculate.js">
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+</script>  
 </body>
-
 </html>

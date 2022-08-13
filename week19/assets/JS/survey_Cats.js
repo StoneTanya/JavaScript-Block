@@ -41,13 +41,15 @@ submitBtn.addEventListener('click', function(event) {
         }
     }
 
-    
+    // let addresses = document.querySelectorAll('input[name="address"]');
+    // for (const address of addresses) {
+    //         let fullAddress = []; 
+    //         fullAddress.push(address.value);
+    //         let fullAddressString = fullAddress.join('');    
+    //         console.log(fullAddressString);
+    // }
 
-    let fullAdress = []; // создаем массив
-    let adress = document.querySelectorAll('input[name="adress"]');
-    fullAdress.push(adress); // добавляем все введенные числа в созданный массив    
-
-    let cat1 = new Cat(inputNameOfCat, inputHolderName, inputHolderSurname, phone, fullAdress, inputBreed, checkboxFeed, radioGender, inputAge, inputDescription, inputPhoto);
+    let cat1 = new Cat(inputNameOfCat, inputHolderName, inputHolderSurname, phone, inputBreed, checkboxFeed, radioGender, inputAge, inputDescription, inputPhoto);
     console.log(cat1);
 })
 

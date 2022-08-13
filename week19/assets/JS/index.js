@@ -15,12 +15,28 @@
 // console.log(employee.surname); 
 // console.log(employee.rate); 
 // console.log(employee.days); 
-// console.log(employee.getSalary()); 
+// getSalary(); 
 
 
 
+let user = {
+    name: "Cersei",
+    surname: "Lannister",
 
+    get fullName() {
+        return `${this.name} ${this.surname}`;
+    },
 
+    set fullName(value) {
+        [this.name, this.surname] = value.split(" ");
+    }
+};
+
+// set fullName запустится с данным значением
+user.fullName = "Lena Headey";
+
+alert(user.name);      // Lena
+alert(user.surname);   // Headey
 
 
 
