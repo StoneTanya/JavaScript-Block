@@ -1,10 +1,8 @@
 class Cat {
-    constructor(CatName, HolderName, HolderSurname, HolderPhone, HolderAdress, breed, feed, gender, age, description, photo) {
+    constructor(CatName, HolderName, HolderSurname, breed, feed, gender, age, description, photo) {
         this.CatName = CatName
         this.HolderName = HolderName
         this.HolderSurname = HolderSurname
-        this.HolderPhone = HolderPhone
-        this.HolderAdress = HolderAdress
         this.breed = breed
         this.feed = feed
         this.gender = gender
@@ -21,7 +19,6 @@ submitBtn.addEventListener('click', function(event) {
     let inputNameOfCat = document.getElementById("patsName").value;
     let inputHolderName = document.getElementById("firstName").value;
     let inputHolderSurname = document.getElementById("secondName").value;
-    let phone = document.getElementById('tel').value;
     let inputBreed = document.querySelector('#breed').value;
     let checkboxFeed = document.querySelectorAll('input[name="food"]');
     let radioGender = document.querySelectorAll('input[name="gender"]');
@@ -41,15 +38,7 @@ submitBtn.addEventListener('click', function(event) {
         }
     }
 
-    // let addresses = document.querySelectorAll('input[name="address"]');
-    // for (const address of addresses) {
-    //         let fullAddress = []; 
-    //         fullAddress.push(address.value);
-    //         let fullAddressString = fullAddress.join('');    
-    //         console.log(fullAddressString);
-    // }
-
-    let cat1 = new Cat(inputNameOfCat, inputHolderName, inputHolderSurname, phone, inputBreed, checkboxFeed, radioGender, inputAge, inputDescription, inputPhoto);
+    let cat1 = new Cat(inputNameOfCat, inputHolderName, inputHolderSurname, inputBreed, checkboxFeed, radioGender, inputAge, inputDescription, inputPhoto);
     console.log(cat1);
 })
 
