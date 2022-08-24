@@ -9,6 +9,7 @@ let superHero = `[{
     "friends": ["Лига Справедливости", "Бэтмен", "Супермен"],
     "superpowers": "сверхчеловеческая сила искорость, выносливость, полет",
     "more": "Принцесса-амозонка родилась на мистическом острове Темескира, расположенном в центре Бермудского треугольника, где пропадают самолеты. Свое настоящее имя — Диана — она получила в честь древнегреческой богини охоты, а суперспособности — от богини любви Афродиты. Растили героиню в исключительно женском обществе, поэтому Чудо-женщина часто появляется в культуре как символ феминизма. У Дианы есть супер-снаряжение: лассо истины и тиара. Первое было сковано богом огня Гефестом, и оно никогда не промахивается. Человек, попавший в его петлю, неизбежно расскажет свои секреты, вспомнит забытое и даже подчинится приказам. Тиара же работает как метательное оружие, способное рассечь что угодно. Корона со звездой в центре символизирует патриотизм американской героини и служит стильным аксессуаром."
+    
 }, {
     "name": "Тор",
     "image": "assets/image/_tor-thor-moguchiy-tor.jpg",
@@ -47,7 +48,18 @@ let superHero = `[{
     "more": "супергероиня российского происхождения родилась предположительно в 1928 году в Сталинграде. Во время Второй мировой войны она потеряла родителей и была спасена из горящего дома советским солдатом. Тот на некоторое время стал ее опекуном. Повзрослев, Наташа попала в организацию «Красная Комната», где прошла многочисленные тренировки, а именно — была частью шпионской программы. Там же ей вживили сыворотку Суперсолдата — как у Капитана Америки, но в советском варианте. Благодаря ей Наташа может использовать максимальные возможности своего организма: силу, гибкость, скорость, ловкость и т. д. Также сыворотка дает эффект замедленного старения. По мнению фанатов, самое главное преимущество Черной Вдовы — то, что ее сыграла красотка Скарлетт Йоханссон"
 }]`;
 superHero = JSON.parse(superHero);
-console.log(superHero[0]);
+
+
+showSlide();
+
+// константы, переменные, исходное состояние галереи (показ активного слайда) 
+const btn_prev = document.getElementById("prev");
+const btn_next = document.getElementById("next");
+const stage = document.querySelectorAll(".mySlade");
+let i = 0;
+stage[0].style.display = 'block';
+let ratingField = document.getElementById('mark__field');
+ratingField.style.display = 'block';
 
 
 function showSlide() {
@@ -71,17 +83,9 @@ function showSlide() {
         </div>`;
     });
     galleryField.innerHTML = out;
-    
 }
-showSlide();
 
 // прокрутка галереи
-const btn_prev = document.getElementById("prev");
-const btn_next = document.getElementById("next");
-const stage = document.querySelectorAll(".mySlade");
-let i = 0;
-stage[0].style.display = 'block';
-
 btn_next.addEventListener('click', () => {
     stage[i].style.display = 'none';
     i++;
@@ -101,14 +105,20 @@ btn_prev.addEventListener('click', () => {
 });
 
 
-let markField = document.getElementById('mark__field');
-markField.style.display = 'block';
-    // оценки
-    let marks = document.querySelectorAll('input[name="mark"]');
-    for (const mark of marks) {
-        if (mark.checked) {
-    console.log(mark.value);
-            
+// оценка супера. забираю value 
 
+ratingField.addEventListener('input', () => {
+    let ratings = document.querySelectorAll('input[name="mark"]');
+    for (const rating of ratings) {
+        if (rating.checked) {
+            console.log(rating.value);
+            superHero[i].rating = rating.value;
+            console.log(superHero);
         }
+        saveRatings();
     }
+});
+
+function saveRatings() {
+    localStorage.setItem('superHero', JSON.stringify(superHero));
+}
