@@ -46,27 +46,69 @@ let superHero = `[{
     "superpowers": "пик человеческого физического потенциала, замедленное старение, знание многих языков",
     "more": "супергероиня российского происхождения родилась предположительно в 1928 году в Сталинграде. Во время Второй мировой войны она потеряла родителей и была спасена из горящего дома советским солдатом. Тот на некоторое время стал ее опекуном. Повзрослев, Наташа попала в организацию «Красная Комната», где прошла многочисленные тренировки, а именно — была частью шпионской программы. Там же ей вживили сыворотку Суперсолдата — как у Капитана Америки, но в советском варианте. Благодаря ей Наташа может использовать максимальные возможности своего организма: силу, гибкость, скорость, ловкость и т. д. Также сыворотка дает эффект замедленного старения. По мнению фанатов, самое главное преимущество Черной Вдовы — то, что ее сыграла красотка Скарлетт Йоханссон"
 }]`;
-
 superHero = JSON.parse(superHero);
-
-console.log(superHero);   
-
+console.log(superHero[0]);
 
 
 function showSlide() {
-    let galleryField = document.getElementById('stage');
+    let galleryField = document.getElementById('gallery');
     let out = '';
     superHero.forEach(function (item) {
-        out += `<h5 class ="">${item.name}</h5>`;
-        out += `<p class =""> <img src="${item.image}" style="width:35vw"></p>`;
-        out += `<p class =""><span>Вселенная: </span>${item.universe}</p>`;
-        out += `<p class =""><span>Альтер эго: </span>${item.alterEgo}</p>`;           
-        out += `<p class =""><span>Род деятельности: </span>${item.line}</p>`;           
-        out += `<p class =""><span>Друзья: </span>${item.friends}</p>`;           
-        out += `<p class =""><span>Суперспособности: </span>${item.superpowers}</p>`;
-        out += `<p class =""><span>Подробнее: </span>${item.more}</p>`;           
+        out +=
+            `<div class="mySlade row">
+        <div class="col-3">
+        <h5 class ="">${item.name}</h5>
+        <p class =""> <img src="${item.image}" style="width:30vw"></p>
+        </div>
+        <div class="col">
+        <p class =""><span>Вселенная: </span>${item.universe}</p>
+        <p class =""><span>Альтер эго: </span>${item.alterEgo}</p>          
+        <p class =""><span>Род деятельности: </span>${item.line}</p>           
+        <p class =""><span>Друзья: </span>${item.friends}</p>           
+        <p class =""><span>Суперспособности: </span>${item.superpowers}</p>
+        <p class =""><span>Подробнее: </span>${item.more}</p>
+        </div>
+        </div>`;
     });
     galleryField.innerHTML = out;
+    
 }
-
 showSlide();
+
+// прокрутка галереи
+const btn_prev = document.getElementById("prev");
+const btn_next = document.getElementById("next");
+const stage = document.querySelectorAll(".mySlade");
+let i = 0;
+stage[0].style.display = 'block';
+
+btn_next.addEventListener('click', () => {
+    stage[i].style.display = 'none';
+    i++;
+    if (i >= stage.length) {
+        i = 0;
+    }
+    stage[i].style.display = 'block';
+});
+
+btn_prev.addEventListener('click', () => {
+    stage[i].style.display = 'none';
+    i = i - 1;
+    if (i < 0) {
+        i = stage.length - 1;
+    }
+    stage[i].style.display = 'block';
+});
+
+
+let markField = document.getElementById('mark__field');
+markField.style.display = 'block';
+    // оценки
+    let marks = document.querySelectorAll('input[name="mark"]');
+    for (const mark of marks) {
+        if (mark.checked) {
+    console.log(mark.value);
+            
+
+        }
+    }

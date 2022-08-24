@@ -1,0 +1,43 @@
+#gallary {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.mySlade {
+    width: 100%;
+    padding: 3% 15%;
+    display: none;
+}
+#mark__field {
+    display: none;
+    padding: 0% 5%;
+    margin: 0% 10%;
+}
+
+#gallary div:first-child {
+    display: block;
+}
+
+#prev,
+#next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+}
+
+#next {
+    right: 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px 5px;
+    border-radius: 10px;
+    font-size: 24px;
+    border: none;
+    background-color: rgb(228, 48, 84);
+    color: #fff;
+}
