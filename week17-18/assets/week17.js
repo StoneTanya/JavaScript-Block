@@ -57,15 +57,13 @@ function loadComments() {
         showComments();
 }
 
-
-
 function showComments() {
     let commentField = document.getElementById('comment-field');
     let out = '';
     comments.forEach(function (item) {
         out += `<p class ="text-right small">${timeConverter(item.time)}</p>`;
-        out += `<p class ="alert alert-primary"> <img src="${item.photo}" style="width:100px"> ${item.name}</p>`;
-        out += `<p class ="alert alert-success">${item.body}</p>`;            //out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;
+        out += `<p class ="alert alert-primary"> <img src="${item.photo}" style="width:100px"> ${nameValidation(item.name)}</p>`;
+        out += `<p class ="alert alert-success">${checkSpam(item.body)}</p>`;            
     });
     commentField.innerHTML = out;
 }
@@ -88,22 +86,15 @@ function timeConverter(UNIX_timestamp) {
     return time;
 }
 
+function nameValidation(name) {
+    if (!!name) {
+        return name[0].toUpperCase() + name.slice(1).toLowerCase();
+    }
+}
 
-// function checkSpam() {
-//         const commentBodyString = localStorage.getItem('comments');
-//         let filteredString = commentBodyString.replace('xxx', '***');
-//         comments = JSON.parse(filteredString);
-//         console.log(comments);
-// }
-
-
-// function checkSpam() {
-//     let commentString = comments.map(({body}) => `${[body]}`).join('');
-//     console.log(commentString);
-//     let filteredString = commentString.replace('xxx', '***');
-//     console.log(filteredString);
-// }
-
+function checkSpam(comments) {
+    return comments.replace(/viagra|xxx/gi, '***');
+}
 
 
 // задание № 3 - ВЫВОД ДАТЫ В ОТФОРМАТИРОВАННОМ ВИДЕ
