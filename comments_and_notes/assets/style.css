@@ -1,0 +1,31 @@
+body {
+    background-color:rgb(86, 111, 122); 
+    color: rgb(245, 224, 224);
+}
+.container {
+    width: 580px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+}
+
+.comments-blog {
+    width: 100%;
+}
+
+#comment-add {
+    background-color: rgb(28, 118, 203);
+}
+
+.input-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    background-color:rgb(55, 52, 61); 
+    color: cyan;
+    
+    border: 1px solid gray;
+    border-radius: 10px;
+}
